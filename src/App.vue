@@ -9,7 +9,7 @@
                 </div>
                 <ul class="event-box"
                     :style="{'height':'auto','display':'block'}">
-                    <li class="event-list" v-for="value in getToDo">
+                    <li class="event-list" v-for="value in getToDo" :key="value">
                         <input type="checkbox" @click="moveToDone(value.id,$event)">
                         <div>{{value.content}}</div>
                         <button class="cancel-btn" @click="moveCancel(value.id)">取消</button>
@@ -19,7 +19,7 @@
                     <span :class="{'close-span': !collapse[1].show}"></span>
                 </div>
                 <ul class="event-box" >
-                    <li class="event-list" v-for="value in getDone" >
+                    <li class="event-list" v-for="value in getDone" :key="value">
                         <input type="checkbox" checked @click="moveToDo(value.id,$event)">
                         <div>{{value.content}}</div>
                         <span class="event-time">{{value.time}}</span>
@@ -29,7 +29,7 @@
                     <span :class="{'close-span': !collapse[2].show}"></span>
                 </div>
                 <ul class="event-box" :class="{'event-box-hide': false}">
-                    <li class="event-list" v-for="value in getCancel">
+                    <li class="event-list" v-for="value in getCancel" :key="value">
                         <div class="event-delete">{{value.content}}</div>
                         <button class="cancel-btn" @click="moveToDo(value.id)">恢复</button>
                     </li>
